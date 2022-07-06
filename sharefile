@@ -1,0 +1,42 @@
+sudo systemctl status docker
+sudo systemctl restart docker
+
+docker images: Liệt kê các images hiện có
+docker rmi {image_id/name}: Xóa một image
+docker ps: Liệt kê các container đang chạy
+docker ps -a: Liệt kê các container đã tắt
+docker rm -f {container_id/name}: Xóa một container
+docker start {new_container_name}: Khởi động một container
+docker exec -it {new_container_name} /bin/bash: Truy cập vào container đang
+
+sudo docker build -t ubuntu-nginx . 
+sudo docker run -p 9000:80 -it -d ubuntu-nginx /bin/bash
+
+docker login
+sudo docker tag ubuntu-nginx vnptbtn/ubuntu-nginx
+docker build -t gialuat-btn/ubuntu-nginx .
+docker run gialuat-btn/ubuntu-nginx
+docker push gialuat-btn/ubuntu-nginx
+sudo docker scan
+
+docker logs <container_name>
+sudo journalctl -u docker.service | less
+docker info
+
+kubectl get all -A
+kubectl get pods --all-namespaces
+kubectl get node -A
+
+https://vulners.com/linux-scanner/audit
+
+cat /etc/lsb-release or /etc/os-release
+cat /etc/issue
+
+sudo docker port test_sshd_container
+sudo docker inspect container
+docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' test_sshd_container
+
+supervisorctl
+restart web
+
+"http://192.168.1.10:8002/sqlmap/mysql/get_int.php?id=1"
